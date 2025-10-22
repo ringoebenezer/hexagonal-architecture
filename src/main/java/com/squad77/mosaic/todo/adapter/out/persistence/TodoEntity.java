@@ -1,6 +1,6 @@
 package com.squad77.mosaic.todo.adapter.out.persistence;
 
-import com.squad77.mosaic.common.adapter.out.persistence.BaseEntity;
+import com.squad77.mosaic.shared.adapter.out.persistence.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;

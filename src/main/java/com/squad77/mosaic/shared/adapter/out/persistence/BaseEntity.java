@@ -1,4 +1,4 @@
-package com.squad77.mosaic.common.adapter.out.persistence;
+package com.squad77.mosaic.shared.adapter.out.persistence;
 
 import jakarta.persistence.*;
 import lombok.*;
