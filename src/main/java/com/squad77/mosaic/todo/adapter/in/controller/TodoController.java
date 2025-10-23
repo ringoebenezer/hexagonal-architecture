@@ -1,8 +1,9 @@
 package com.squad77.mosaic.todo.adapter.in.controller;
 
-import com.squad77.mosaic.todo.adapter.in.dto.CreateTodoRequest;
-import com.squad77.mosaic.todo.domain.model.Todo;
-import com.squad77.mosaic.todo.domain.port.dto.CreateTodoCommand;
+import com.squad77.mosaic.todo.adapter.in.dto.request.CreateTodo;
+import com.squad77.mosaic.todo.adapter.in.dto.response.TodoResponse;
+import com.squad77.mosaic.todo.adapter.out.mapper.TodoMapper;
+import com.squad77.mosaic.todo.domain.port.in.command.CreateTodoCommand;
 import com.squad77.mosaic.todo.domain.port.in.TodoUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,23 +16,23 @@ import java.util.UUID;
 @RequestMapping("/api/todos")
 @RequiredArgsConstructor
 public class TodoController {
+    private final TodoMapper todoMapper;
     private final TodoUseCase todoUseCase;
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Todo create(@RequestBody CreateTodoRequest request) {
+    public TodoResponse create(@RequestBody CreateTodo request) {
         var command = new CreateTodoCommand(request.title(), request.description());
-        return todoUseCase.createTodo(command);
+        var todo = todoUseCase.createTodo(command);
+        return todoMapper.toResponse(todo);
     }
 
     @GetMapping
-    public List<Todo> getAll() {
-        return todoUseCase.getAllTodos();
+    public List<TodoResponse> getAll() {
+        return todoMapper.toResponseList(todoUseCase.getAllTodos());
     }
 
     @GetMapping("/{id}")
-    public Todo getById(@PathVariable UUID id) {
-        return todoUseCase.getTodoById(id);
+    public TodoResponse getById(@PathVariable UUID id) {
+        return todoMapper.toResponse(todoUseCase.getTodoById(id));
     }
 
     @PutMapping("/{id}/complete")

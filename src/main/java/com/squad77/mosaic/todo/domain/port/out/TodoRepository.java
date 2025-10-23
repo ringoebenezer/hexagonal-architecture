@@ -1,7 +1,6 @@
 package com.squad77.mosaic.todo.domain.port.out;
 
 import com.squad77.mosaic.todo.domain.model.Todo;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

@@ -1,7 +1,7 @@
 package com.squad77.mosaic.todo.domain.service;
 
 import com.squad77.mosaic.todo.domain.model.Todo;
-import com.squad77.mosaic.todo.domain.port.dto.CreateTodoCommand;
+import com.squad77.mosaic.todo.domain.port.in.command.CreateTodoCommand;
 import com.squad77.mosaic.todo.domain.port.in.TodoUseCase;
 import com.squad77.mosaic.todo.domain.port.out.TodoRepository;
 import lombok.RequiredArgsConstructor;
